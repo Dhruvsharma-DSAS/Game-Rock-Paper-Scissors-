@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import History from './History.jsx'
 
 const Game = () => {
   const [userMove, setUserMove] = useState(null)
@@ -6,6 +7,7 @@ const Game = () => {
   const [result, setResult] = useState('Choose a move to start.')
   const [score, setScore] = useState({ player: 0, computer: 0, draws: 0 })
   const [previousRound, setPreviousRound] = useState(null)
+  const [history, setHistory] = useState([])
 
   const detail = { Rock: '🪨', Paper: '📄', Scissors: '✂️' }
   const options = ['Rock', 'Paper', 'Scissors']
@@ -16,6 +18,7 @@ const Game = () => {
       computerMove,
       result,
       score,
+      history,
     })
 
     const comp = options[Math.floor(Math.random() * options.length)]
@@ -44,6 +47,15 @@ const Game = () => {
     setComputerMove(comp)
     setResult(nextResult)
     setScore(nextScore)
+    setHistory((currentHistory) => [
+      ...currentHistory,
+      {
+        id: currentHistory.length + 1,
+        userMove: move,
+        computerMove: comp,
+        result: nextResult,
+      },
+    ])
   }
 
   const handleBack = () => {
@@ -55,6 +67,7 @@ const Game = () => {
     setComputerMove(previousRound.computerMove)
     setResult(previousRound.result)
     setScore(previousRound.score)
+    setHistory(previousRound.history)
     setPreviousRound(null)
   }
 
@@ -75,6 +88,7 @@ const Game = () => {
           Back
         </button>
       </div>
+      <History rounds={history} detail={detail} />
     </div>
   )
 }

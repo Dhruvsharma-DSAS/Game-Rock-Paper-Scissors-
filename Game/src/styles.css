@@ -49,6 +49,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 /* Buttons */
@@ -70,6 +71,42 @@ h1 {
 .controls .rock { color: #7a5c3a }
 .controls .paper { color: #3a6f7a }
 .controls .scissors { color: #7a3a5c }
+
+.history {
+  margin-top: 24px;
+  border-top: 1px solid #e6e6e6;
+  padding-top: 16px;
+}
+
+.history h3 {
+  margin: 0 0 12px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.history-empty {
+  text-align: center;
+  color: #666;
+  margin: 0;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  background: #fafafa;
+}
 
 /* Small responsive tweak */
 @media (max-width: 420px) {
